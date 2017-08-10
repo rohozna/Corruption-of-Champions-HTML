@@ -427,7 +427,17 @@ Data.fixSave = function() {
     if (player.armor.getTooltipDescription == undefined)
         delete player.armor.getTooltipDescription;
     for (i in player.cocks) {
-        fixCock(player.cocks[i]);
+		// Needed so prototype works correctly
+		var oldCock = player.cocks[i];
+		var newCock = new Cock();
+		newCock.cockType = oldCock.cockType;
+		newCock.cockLength = oldCock.cockLength;
+		newCock.cockThickness = oldCock.cockThickness;
+		newCock.knotMultiplier = oldCock.knotMultiplier;
+		newCock.pierced = oldCock.pierced;
+		newCock.sock = oldCock.sock;
+		
+		player.cocks[i] = newCock;
     }
     for (i in player.vaginas) {
         fixVagina(player.vaginas[i]);
