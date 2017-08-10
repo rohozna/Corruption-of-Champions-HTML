@@ -14,6 +14,9 @@ function Cock(length, thickness, type) {
     this.sock = "";
 }
 
+Cock.prototype.hasKnot = function() {
+	return this.knotMultiplier > 1;
+}
 Cock.prototype.cockArea = function() {
 	return (this.cockLength * this.cockThickness)
 }
